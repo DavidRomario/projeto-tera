@@ -1,0 +1,40 @@
+version: "3.1"
+services:
+  backend:
+    build: /
+    ports:
+      - 3030:3030
+    volumes:
+      - ../backend/:/app/
+      - /app/node_modules
+    entrypoint: "npm run dev"
+    depends_on:
+      - backend-mysql
+    environment:
+      MYSQL_USER: "admin"
+      MYSQL_DATABASE: "tenisstore"
+      MYSQL_HOST: tenisstore-mysql
+      MYSQL_PASSWORD: "password"
+  backend-mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: "tenisstore"
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: "admin"
+      # You can use whatever password you like
+      MYSQL_PASSWORD: "password"
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: "password"
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - "3306:3306"
+    expose:
+      # Opens port 3306 on the container
+      - "3306"
+      # Where our data will be persisted
+    volumes:
+      - backend-mysql-data:/var/lib/mysql
+# Names our volume
+volumes:
+  backend-mysql-data:
