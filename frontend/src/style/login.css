@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+#h1-login {
+  font-family: "Open Sans", sans-serif;
+  color: #000;
+}
+#topo {
+  width: 100%;
+  height: 40px;
+  background-color: #b02b0e;
+}
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 500px;
+}
+.login-user-input {
+  width: 300px;
+  height: 48px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(112, 112, 112);
+  color: rgb(112, 112, 112);
+}
+.login-password-input {
+  width: 300px;
+  height: 48px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(112, 112, 112);
+  color: rgb(112, 112, 112);
+}
+.login-btn {
+  border: 0px;
+  border-radius: 5px;
+  color: white;
+  background-color: green;
+  width: 300px;
+  height: 48px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.create-account-btn {
+  border-radius: 5px;
+  margin: auto;
+  background-color: white;
+  width: 300px;
+  height: 48px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  border: 1px solid rgb(112, 112, 112);
+  color: rgb(112, 112, 112);
+}
+.login-btn:hover {
+  background-color: rgb(255, 255, 255);
+  color: green;
+}
+.create-account-btn:hover {
+  background-color: green;
+  color: rgb(255, 255, 255);
+}
+#home {
+  text-decoration: none;
+  color: black;
+}
+
+.product {
+  align-items: center;
+  height: 150px;
+  justify-content: space-around;
+  display: flex;
+  width: 60%;
+  color: black;
+  background-color: #ffffff;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid rgb(188, 188, 188);
+}
+
+.photo {
+  width: 150px;
+  border-radius: 10px;
+  height: 150px;
+}
+.payment {
+  border-radius: 5px;
+  width: 150px;
+  color: rgb(255, 255, 255);
+  margin: auto;
+  background-color: green;
+  padding: 7px 40px;
+  display: flex;
+}
+.payment:hover {
+  background-color: rgb(255, 255, 255);
+  color: green;
+}
+.button2 {
+  margin-top: 6px;
+}
+#produto-nome {
+  color: #000000;
+  font-size: 19px;
+}
+#produto-preco {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bolder;
+  font-size: 19px;
+}

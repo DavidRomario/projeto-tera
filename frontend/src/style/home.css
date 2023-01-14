@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+
+body {
+  background-color: #ffffff;
+  margin: 0px;
+  width: 100%;
+}
+.title { text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  color:#fff;
+
+}
+
+#topo {
+  width: 100%;
+  height: 40px;
+  background-color: #b02b0e;
+}
+
+header {
+  width: 100%;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  background-color: #f22b00;
+  justify-content: space-around;
+}
+
+#menu-content {
+  background-color: #f7f4f3;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-family: "Open Sans";
+}
+
+#home {
+  text-decoration: none;
+}
+
+section {
+  max-width: 1000px;
+  flex-wrap: wrap;
+  background-color: #f7f4f3;
+  border-radius: 10px;
+  margin: 100px auto;
+  padding: 22px;
+  display: flex;
+  justify-content: space-around;
+}
+
+#divBusca {
+  padding: 0px;
+  background-color: white;
+  border: solid 1px black;
+  border-radius: 10px;
+  height: 35px;
+  width: 50%;
+}
+
+#txtBusca {
+  background-color: transparent;
+  padding-left: 5px;
+  font-size: 18px;
+  border: none;
+  height: 32px;
+  width: 78%;
+}
+
+#btnBusca {
+  border: none;
+  float: right;
+  height: 35px;
+  border-radius: 0 7px 7px 0;
+  width: 20%;
+  background: black;
+  color: white;
+  font-weight: bold;
+}
+
+#divBusca img {
+  float: left;
+}
+
+.name {
+  margin: 10 0 5px;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.image {
+  margin-top: 5px;
+  width: 220px;
+  height: 220px;
+  border-radius: 10px;
+}
+
+.tenis-content {
+  width: 235px;
+  margin: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f4f3;
+  font-size: 17px;
+  font-family: sans-serif;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+.genero {
+  color: black;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.frete {
+  color: #2ae559;
+  margin: 0 0 5px;
+  text-align: left;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.parcelas {
+  color: black;
+  font-size: 15px;
+}
+
+.tenis-content:hover {
+  background-color: #f22b00;
+}
+
+.align {
+  font-size: large;
+}
+
+#cart-icon {
+  margin: 10px;
+  height: 30px;
+  width: 30px;
+}
+
+#login-icon {
+  margin: 10px;
+  height: 30px;
+  width: 30px;
+}
+
+p {
+  color: black;
+  margin: 0 0 5px;
+  text-align: left;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .fi {
+    max-width: 720;
+  }
+
+}
+
+.f1 {
+  display: flex;
+  height: 200px;
+  background-color: #b02b0e;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.list-footer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+
+}
+
+.txt-center {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  text-align: center !important;
+  margin: auto;
+
+}
+
+.nav-item {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  padding-right: 0.6rem;
+  padding-left: 0.6rem;
+}
