@@ -13,13 +13,17 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(255),
       },
+      number: {
+        allowNull: false,
+        type: Sequelize.STRING(255),
+      },
       city: {
         allowNull: false,
         type: Sequelize.STRING(45),
       },
       cep: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(20),
       },
       district: {
         allowNull: false,
@@ -30,6 +34,11 @@ module.exports = {
         type: Sequelize.STRING(255),
       },
       users_id: {
+        unique: "user_attribute",
+        references: {
+          model: "Users", // <<< Note, its table's name, not object name
+          referencesKey: "id", // <<< Note, its a column name
+        },
         allowNull: false,
         type: Sequelize.INTEGER,
       },
