@@ -11,10 +11,10 @@ services:
     depends_on:
       - backend-mysql
     environment:
-      MYSQL_USER: "root"
       MYSQL_DATABASE: "backend"
-      MYSQL_HOST: backend-mysql
+      MYSQL_USER: "root"
       MYSQL_PASSWORD: "password"
+      MYSQL_HOST: backend-mysql
       # DB_ROOT_USERNAME: root
       # DB_ROOT_PASSWORD: password
       MONGO_URI: "mongodb://backend_mongodb:27017"
@@ -23,11 +23,8 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: "backend"
-      # So you don't have to use root, but you can if you like
-      MYSQL_USER: "admin"
-      # You can use whatever password you like
+      MYSQL_USER: "root"
       MYSQL_PASSWORD: "password"
-      # Password for root access
       MYSQL_ROOT_PASSWORD: "password"
     ports:
       # <Port exposed> : < MySQL Port running inside container>
