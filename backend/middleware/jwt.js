@@ -1,4 +1,7 @@
 const jwt = require("jsonwebtoken");
+const SECRET = process.env.SECRET
+  ? process.env.SECRET
+  : "skaiokaopskalsoaksosoakspokkofiashiufasnieql";
 
 module.exports = async (req, res, next) => {
   try {

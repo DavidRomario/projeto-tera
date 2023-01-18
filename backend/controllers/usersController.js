@@ -156,6 +156,7 @@ async function updateUser(req, res) {
 async function deleteUser(req, res) {
   try {
     const id = req.params.id;
+
     const user = await models.User.findOne({
       where: {
         id: parseInt(id),
@@ -168,7 +169,7 @@ async function deleteUser(req, res) {
         payload: [],
       });
     }
-    await models.User.update({
+    await models.User.destroy({
       where: {
         id: parseInt(id),
       },

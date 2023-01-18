@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       documentNumber: DataTypes.STRING,
       birthdate: DataTypes.DATE,
       telephone: DataTypes.STRING,
+      deleted_at: DataTypes.DATE,
     },
     {
       sequelize,

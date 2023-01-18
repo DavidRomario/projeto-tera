@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { Json } = require("sequelize/types/utils");
 
 const orderSchema = new mongoose.Schema({
   id: mongoose.Schema.Types.ObjectId,
@@ -16,7 +15,11 @@ const orderSchema = new mongoose.Schema({
     required: true,
   },
   products: {
-    type: Json,
+    type: Object,
+    required: true,
+  },
+  user_id: {
+    type: Number,
     required: true,
   },
   createdAt: {

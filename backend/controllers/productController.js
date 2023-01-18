@@ -21,9 +21,6 @@ async function getAllProducts(req, res) {
 
 const getProductById = async (req, res) => {
   try {
-    // get id from req.params
-    // find product by id
-    // return product
     const id = req.params.id;
     const product = await productSchema.findById(id);
     if (!product) {
@@ -59,4 +56,10 @@ const deleteProduct = async (req, res) => {
   //
 };
 
-module.exports = { getAllProducts };
+module.exports = {
+  getAllProducts,
+  getProductById,
+  createProduct,
+  updateProduct,
+  deleteProduct,
+};
