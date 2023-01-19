@@ -1,20 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Default from "../templates/Default";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
-  const [currentsProduct, setCurrentUser] = useState("");
+  const [page, setPage] = useState(1);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch("http://localhost:3000/products/all")
-      .then((response) => response.json())
-      .then((data) => setProducts(data));
-  }, []);
-
+  async function allProducts() {
+    const response = await axios.get("http://localhost:3030/products/all", {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    });
+    setProducts(response.data.payload);
+  }
   const handleClick = (event) => {
     navigate(`/Description/${event.currentTarget.id}`);
+  };
+
+  useEffect(() => {
+    allProducts();
+  }, [page]);
+
+  const nextPage = () => {
+    setPage(page + 1);
+  };
+
+  const previousPage = () => {
+    if (page !== 1) {
+      setPage(page - 1);
+    }
   };
 
   return (
@@ -27,24 +45,25 @@ export default function Home() {
               className="tenis-content"
               onClick={handleClick}
             >
-              <a href="">
-                <img
-                  className="image"
-                  src={`${product.imagem}`}
-                  alt=""
-                  href=""
-                />
-              </a>
-              <a href="" className="name">
-                {`${product.nome}`}
-              </a>
-              <p className="genero">{`${product.genero}`}</p>
+              <Link>
+                <img className="image" src={`${product.image}`} alt="" />
+              </Link>
+              <Link className="productName">{`${product.name}`}</Link>
+              <p className="genero">{`${product.category}`}</p>
               <p className="frete">Frete Gratis</p>
-              <p>{`${product.valor}`}</p>
-              <p className="parcelas">{`${product.parcela}`}</p>
+              <p>{`${product.price}`}</p>
+              <p className="parcelas">{`${product.billing}`}</p>
             </div>
           ))}
         </section>
+        <div className="repagination">
+          <button className="refresh" onClick={() => previousPage()}>
+            anterior
+          </button>
+          <button className="refresh" onClick={() => nextPage()}>
+            proximo
+          </button>
+        </div>
       </div>
     </Default>
   );

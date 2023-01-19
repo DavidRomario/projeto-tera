@@ -5,6 +5,7 @@ import Login from "./components/pages/Login";
 import Cart from "./components/pages/Cart";
 import Description from "./components/pages/Description";
 import Registration from "./components/pages/Registration";
+
 import "./style/home.css";
 import "./style/login.css";
 import "./style/produto.css";

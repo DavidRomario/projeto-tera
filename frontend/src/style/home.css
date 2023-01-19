@@ -5,10 +5,15 @@ body {
   margin: 0px;
   width: 100%;
 }
-.title { text-decoration: none;
+.title {
+  text-decoration: none;
   font-family: "Open Sans", sans-serif;
-  color:#fff;
+  color: #fff;
+}
 
+.productName {
+  text-decoration: none;
+  color: black;
 }
 
 #topo {
@@ -163,7 +168,6 @@ p {
   .fi {
     max-width: 720;
   }
-
 }
 
 .f1 {
@@ -172,7 +176,6 @@ p {
   background-color: #b02b0e;
   align-items: center;
   justify-content: center;
-
 }
 
 .list-footer {
@@ -180,7 +183,6 @@ p {
   justify-content: center;
   flex-wrap: wrap;
   list-style: none;
-
 }
 
 .txt-center {
@@ -188,7 +190,6 @@ p {
   color: white;
   text-align: center !important;
   margin: auto;
-
 }
 
 .nav-item {

@@ -7,7 +7,6 @@ const SECRET = process.env.SECRET
   : "skaiokaopskalsoaksosoakspokkofiashiufasnieql";
 
 async function login(req, res) {
-  console.log(SECRET);
   try {
     const email = req.body.email;
     const password = req.body.password;
