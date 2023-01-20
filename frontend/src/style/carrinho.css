@@ -1,15 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 
-#produto-carrinho { height: 800px;
-   margin-top: 70px;
-
+#produto-carrinho {
+  height: 800px;
+  margin-top: 70px;
 }
 
 #home {
   text-decoration: none;
   color: black;
 }
-
 
 .product {
   align-items: center;
@@ -46,16 +45,17 @@
   color: green;
 }
 
-.button2 {margin-top: 6px;
+.button2 {
+  margin-top: 6px;
 }
 
-#produto-nome{
+#produto-nome {
   color: #000000;
   font-size: 19px;
 }
 
-#produto-preco{
-  font-family: 'Open Sans', sans-serif;
+#produto-preco {
+  font-family: "Open Sans", sans-serif;
   font-weight: bolder;
   font-size: 19px;
 }

@@ -3,11 +3,19 @@ import { useNavigate } from "react-router-dom";
 import Default from "../templates/Default";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useApp } from "../../hooks/appContent";
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
-  const [page, setPage] = useState(1);
+  const [productsData, setProductsData] = useState([]);
+  const { input } = useApp();
+  // const [page, setPage] = useState(1);
   const navigate = useNavigate();
+
+  const products = productsData.filter(({ name }) => {
+    const nameProduct = `${name.toLowerCase()}`;
+
+    return nameProduct.includes(input);
+  });
 
   async function allProducts() {
     const response = await axios.get("http://localhost:3030/products/all", {
@@ -15,25 +23,25 @@ export default function Home() {
         Authorization: localStorage.getItem("token"),
       },
     });
-    setProducts(response.data.payload);
+    setProductsData(response.data.payload);
   }
   const handleClick = (event) => {
-    navigate(`/Description/${event.currentTarget.id}`);
+    navigate(`/description/${event.currentTarget.id}`);
   };
 
   useEffect(() => {
     allProducts();
-  }, [page]);
+  }, []);
 
-  const nextPage = () => {
-    setPage(page + 1);
-  };
+  // const nextPage = () => {
+  //   setPage(page + 1);
+  // };
 
-  const previousPage = () => {
-    if (page !== 1) {
-      setPage(page - 1);
-    }
-  };
+  // const previousPage = () => {
+  //   if (page !== 1) {
+  //     setPage(page - 1);
+  //   }
+  // };
 
   return (
     <Default>
@@ -56,14 +64,14 @@ export default function Home() {
             </div>
           ))}
         </section>
-        <div className="repagination">
+        {/* <div className="repagination">
           <button className="refresh" onClick={() => previousPage()}>
             anterior
           </button>
           <button className="refresh" onClick={() => nextPage()}>
             proximo
           </button>
-        </div>
+        </div> */}
       </div>
     </Default>
   );

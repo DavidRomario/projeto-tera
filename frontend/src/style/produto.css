@@ -10,7 +10,8 @@ main {
   margin: 100px auto;
   padding: 22px;
 }
-.product { display: flex;
+.product {
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
@@ -39,7 +40,7 @@ main {
   font-weight: bold;
   margin: 5px;
 }
-.press:hover {
+*/ .press:hover {
   background-color: white;
   color: red;
 }

@@ -20,6 +20,7 @@
   height: 500px;
 }
 .login-user-input {
+  outline: 0;
   width: 300px;
   height: 48px;
   margin-bottom: 10px;
@@ -29,6 +30,7 @@
   color: rgb(112, 112, 112);
 }
 .login-password-input {
+  outline: 0;
   width: 300px;
   height: 48px;
   margin-bottom: 10px;
@@ -42,7 +44,7 @@
   border-radius: 5px;
   color: white;
   background-color: green;
-  width: 300px;
+  width: 309px;
   height: 48px;
   margin-bottom: 10px;
   cursor: pointer;
@@ -52,7 +54,7 @@
   border-radius: 5px;
   margin: auto;
   background-color: white;
-  width: 300px;
+  width: 309px;
   height: 48px;
   margin-bottom: 10px;
   cursor: pointer;
@@ -71,49 +73,4 @@
 #home {
   text-decoration: none;
   color: black;
-}
-
-.product {
-  align-items: center;
-  height: 150px;
-  justify-content: space-around;
-  display: flex;
-  width: 60%;
-  color: black;
-  background-color: #ffffff;
-  margin: auto;
-  padding: 10px;
-  border-radius: 10px;
-  border: 2px solid rgb(188, 188, 188);
-}
-
-.photo {
-  width: 150px;
-  border-radius: 10px;
-  height: 150px;
-}
-.payment {
-  border-radius: 5px;
-  width: 150px;
-  color: rgb(255, 255, 255);
-  margin: auto;
-  background-color: green;
-  padding: 7px 40px;
-  display: flex;
-}
-.payment:hover {
-  background-color: rgb(255, 255, 255);
-  color: green;
-}
-.button2 {
-  margin-top: 6px;
-}
-#produto-nome {
-  color: #000000;
-  font-size: 19px;
-}
-#produto-preco {
-  font-family: "Open Sans", sans-serif;
-  font-weight: bolder;
-  font-size: 19px;
 }
