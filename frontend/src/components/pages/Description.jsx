@@ -15,33 +15,28 @@ export default function Description() {
     );
     if (response.data.success) {
       setProduct(response.data.payload[0]);
-
-      setTimeout(() => {
-        setProductsOnLocalStorage(response.data.payload[0]);
-      }, 3000);
     }
   }
 
-  const handleClick = (event) => {
-    navigate(`/cart`);
+  const handleClick = () => {
+    setProductsOnLocalStorage();
+    navigate("/cart");
   };
 
-  const setProductsOnLocalStorage = async (productData) => {
-    const selectedProduct = productData;
-    const storage = localStorage.getItem("products");
-    const productsList = JSON.stringify(selectedProduct);
-
-    if (storage == null) {
-      localStorage.setItem("products", productsList);
+  const setProductsOnLocalStorage = async () => {
+    const products = localStorage.getItem("products");
+    const insertProducts = [];
+    if (!products) {
+      insertProducts.push(product);
+      localStorage.setItem("products", JSON.stringify(insertProducts));
     } else {
-      const products = [];
-      const storageProducts = storage;
-
-      products.push(storageProducts);
-      products.push(productsList);
-
-      localStorage.setItem("products", products);
+      const listProducts = JSON.parse(products);
+      listProducts.push(product);
+      localStorage.setItem("products", JSON.stringify(listProducts));
     }
+    const products2 = localStorage.getItem("products");
+
+    console.log(products2);
   };
 
   const getProductsFromLocalStorage = () => {
@@ -62,11 +57,9 @@ export default function Description() {
             <p className="preço">{`${product.price}`}</p>
             <p className="descricao">{`${product.description}`}</p>
             <div>
-              <Link>
-                <button className="press" onClick={handleClick}>
-                  Adicionar ao carrinho
-                </button>
-              </Link>
+              <button className="press" onClick={(e) => handleClick()}>
+                Adicionar ao carrinho
+              </button>
             </div>
           </div>
         </main>
