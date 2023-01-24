@@ -10,6 +10,7 @@ import { AppProvider } from "./hooks/appContent";
 import "./style/home.css";
 import "./style/login.css";
 import "./style/produto.css";
+import "./style/carrinho.css";
 
 function App() {
   return (

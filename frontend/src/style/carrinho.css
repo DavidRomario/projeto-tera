@@ -1,43 +1,65 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 
 #produto-carrinho {
-  height: 800px;
+  height: 100%;
+  width: 70%;
   margin-top: 70px;
+  margin-bottom: 250px;
 }
 
-#home {
+#main-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+#payment-total {
+  width: 30%;
+  background-color: blue;
+}
+
+.form-payment {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+/* #home {
   text-decoration: none;
   color: black;
-}
+} */
 
-.product {
+.product-cart {
   align-items: center;
   height: 150px;
   justify-content: space-around;
   display: flex;
   width: 60%;
   color: black;
-  background-color: #ffffff;
-  margin: auto;
-  padding: 10px;
+  background-color: #f7f4f3;
+  margin: 15px auto;
   border-radius: 10px;
-  border: 2px solid rgb(188, 188, 188);
+  border: 1px solid rgb(188, 188, 188);
 }
 
 .photo {
   width: 150px;
   border-radius: 10px;
   height: 150px;
+  mix-blend-mode: multiply;
 }
 
 .payment {
+  text-transform: uppercase;
+  cursor: pointer;
   border-radius: 5px;
   width: 150px;
   color: rgb(255, 255, 255);
   margin: auto;
   background-color: green;
-  padding: 7px 40px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
 }
 
 .payment:hover {
@@ -46,6 +68,7 @@
 }
 
 .button2 {
+  margin-bottom: 15px;
   margin-top: 6px;
 }
 
@@ -54,8 +77,19 @@
   font-size: 19px;
 }
 
+.none {
+  text-decoration: none;
+}
+
 #produto-preco {
   font-family: "Open Sans", sans-serif;
   font-weight: bolder;
   font-size: 19px;
+}
+
+.result {
+  height: 100px;
+  background-color: aqua;
+  width: 100%;
+  display: flex;
 }

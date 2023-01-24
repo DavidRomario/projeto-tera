@@ -53,8 +53,11 @@ export default function Login() {
         "Content-Type": "application/json",
       },
     });
-
-    localStorage.setItem("token", request.data.payload[0].token);
+    localStorage.setItem(
+      "address",
+      JSON.stringify(request.data.payload[0].address)
+    );
+    localStorage.setItem("token", request.data.payload[0].user.token);
     const productsCart = verifyCart();
 
     if (productsCart) {

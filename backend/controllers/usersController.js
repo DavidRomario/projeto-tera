@@ -11,6 +11,12 @@ async function createUser(req, res) {
     const documentNumber = req.body.documentNumber;
     const birthdate = req.body.birthdate;
     const telephone = req.body.telephone;
+    const street = req.body.street;
+    const number = req.body.number;
+    const city = req.body.city;
+    const district = req.body.district;
+    const complement = req.body.complement;
+    const cep = req.body.cep;
 
     const verifyUser = await models.User.findOne({
       where: {
@@ -28,21 +34,33 @@ async function createUser(req, res) {
         payload: [],
       });
     }
-    const user = await models.User.create({
-      name: name,
-      lastname: lastname,
-      email: email,
-      password: await bcrypt.hashSync(password, 10),
-      documentNumber: documentNumber,
-      birthdate: birthdate,
-      telephone: telephone,
-    });
+    if (verifyUser === null) {
+      const user = await models.User.create({
+        name: name,
+        lastname: lastname,
+        email: email,
+        password: await bcrypt.hashSync(password, 10),
+        documentNumber: documentNumber,
+        birthdate: birthdate,
+        telephone: telephone,
+      });
 
-    return res.status(200).json({
-      success: true,
-      message: "User created successfully",
-      payload: [user],
-    });
+      const address = await models.Address.create({
+        street,
+        city,
+        cep,
+        number,
+        district,
+        complement: complement ? complement : "N/A",
+        users_id: user.id,
+      });
+
+      return res.status(200).json({
+        success: true,
+        message: "User created successfully",
+        payload: [{ user: user, address: address }],
+      });
+    }
   } catch (error) {
     console.log(error);
     return res.status(500).json({
@@ -68,10 +86,15 @@ async function getUserById(req, res) {
         payload: [],
       });
     }
+    const address = await models.Address.findOne({
+      where: {
+        users_id: parseInt(id),
+      },
+    });
     return res.status(200).json({
       success: true,
       message: "User found",
-      payload: [user],
+      payload: [{ user: user, address: address }],
     });
   } catch (error) {
     console.log(error);

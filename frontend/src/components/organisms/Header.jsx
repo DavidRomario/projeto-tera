@@ -6,6 +6,13 @@ import { useApp } from "../../hooks/appContent";
 
 export default function Header() {
   const { setInput } = useApp();
+  const isLogged = () => {
+    if (localStorage.getItem("token")) {
+      return "/";
+    } else {
+      return "/login";
+    }
+  };
   return (
     <div>
       <header>
@@ -25,7 +32,7 @@ export default function Header() {
           <Link to="/cart">
             <img id="cart-icon" src={logo} alt="" srcset="" />
           </Link>
-          <Link to="/login">
+          <Link to={isLogged()}>
             <img id="login-icon" src={login} alt="" />
           </Link>
         </div>

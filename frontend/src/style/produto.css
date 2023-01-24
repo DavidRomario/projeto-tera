@@ -40,11 +40,16 @@ main {
   font-weight: bold;
   margin: 5px;
 }
-*/ .press:hover {
+.press:hover {
   background-color: white;
   color: red;
 }
 .press {
+  height: 25px;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 190px;
+  /* border: 0; */
   color: white;
   background-color: red;
 }
