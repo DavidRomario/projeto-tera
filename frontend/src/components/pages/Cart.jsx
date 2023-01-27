@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import Default from "../templates/Default";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export default function Cart() {
   const [products, setProducts] = useState([]);
+  const [cvv, setCvv] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [cardName, setCardName] = useState("");
+  const [cardExpiration, setCardExpiration] = useState("");
   const navigate = useNavigate();
-  // criar constantes com os dados dos cartoes
 
   const getProductsFromLocalStorage = () => {
     const productsFromStorage = localStorage.getItem("products");
@@ -14,15 +18,25 @@ export default function Cart() {
     setProducts(JSON.parse(productsFromStorage));
   };
 
-  const finishPayment = () => {
+  async function finishPayment() {
     const isLogged = localStorage.getItem("token");
     if (isLogged !== null) {
-      const body = {};
-
-      const request = {
-        success: true,
+      const body = {
+        cvv,
+        cardNumber,
+        cardName,
+        cardExpiration,
       };
-      // const request = fazer post com axios para endpoint de pagamento
+
+      // const request = {
+      //   success: true,
+      // };
+      const request = await axios.post("http://localhost:3030/payment", body, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+        success: true,
+      });
       if (request.success) {
         Swal.fire(
           "Pagamento finalizado com sucesso!",
@@ -30,8 +44,7 @@ export default function Cart() {
           "success"
         );
         localStorage.removeItem("products");
-        navigate("/");
-        // navigate("/orders")
+        navigate("/orders");
       }
     } else {
       Swal.fire(
@@ -41,7 +54,7 @@ export default function Cart() {
       );
       navigate("/login");
     }
-  };
+  }
 
   useEffect(() => {
     getProductsFromLocalStorage();
@@ -68,18 +81,58 @@ export default function Cart() {
           ))}
         </div>
         <div id="payment-total">
-          <p>Dados para pagamento:</p>
-          <form className="form-payment" action="">
-            <input className="form-payment" type="text" />
+          <form className="checkout">
+            <div className="checkout-header">
+              <h1 className="checkout-title">Dados para pagamento:</h1>
+            </div>
+            <p>
+              <input
+                type="text"
+                className="checkout-input checkout-name"
+                placeholder="Your Name"
+                value={cardName}
+                onChange={(e) => setCardName(e.target.value)}
+              />
+              <input
+                type="text"
+                className="checkout-input checkout-exp"
+                placeholder="YY"
+                value={cardExpiration}
+                onChange={(e) => setCardExpiration(e.target.value)}
+              />
+            </p>
+            <p>
+              <input
+                type="text"
+                className="checkout-input checkout-card"
+                placeholder="4111 1111 1111 1111"
+                value={cardNumber}
+                onChange={(e) => setCardNumber(e.target.value)}
+              />
+              <input
+                type="text"
+                className="checkout-input checkout-cvc"
+                placeholder="CVC"
+                value={cvv}
+                onChange={(e) => setCvv(e.target.value)}
+              />
+            </p>
+            <p>
+              <input
+                type="submit"
+                value="Purchase"
+                onClick={finishPayment}
+                className="checkout-btn"
+              />
+            </p>
           </form>
-          <p>Endereço de entrega:</p>
-          <p>disdeffe</p>
-          <p>Valor total:</p>
-          <p>R$3000,00</p>
+          <form className="checkout">
+            <p>Endereço de entrega:</p>
+            <p>disdeffe</p>
+            <p>Valor total:</p>
+            <p>R$3000,00</p>
+          </form>
           <div className="button2">
-            <button onClick={finishPayment} className="payment">
-              Finalizar Pagamento
-            </button>
             <Link to="/">
               <button className="payment">Continuar comprando</button>
             </Link>

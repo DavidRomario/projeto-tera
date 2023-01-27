@@ -71,7 +71,7 @@ export default function Registration() {
   return (
     <Default>
       <div id="all-content">
-        <section id="section-form">
+        <div id="section-form">
           <form name="meuForm" method="post" id="formulario">
             <label>
               <span>Nome</span>
@@ -117,7 +117,7 @@ export default function Registration() {
               <span>CPF</span>
               <input
                 value={documentNumber}
-                type="number"
+                type="text"
                 className="input_text"
                 name="cpf"
                 onChange={(e) => setDocumentNumber(e.target.value)}
@@ -142,79 +142,80 @@ export default function Registration() {
                 type="text"
                 className="input_text"
                 name="data"
-                id="data"
                 placeholder="dd/mm/aaaa"
                 onChange={(e) => setBirthdate(e.target.value)}
               />
             </label>
-            <label>
-              <span>Rua</span>
-              <input
-                value={street}
-                type="text"
-                className="input_text"
-                name="rua"
-                onChange={(e) => setStreet(e.target.value)}
-              />
-            </label>
-            <label>
-              <span>CEP</span>
-              <input
-                value={cep}
-                type="number"
-                className="input_text"
-                name="cep"
-                onChange={(e) => setCep(e.target.value)}
-              />
-            </label>
-            <label>
-              <span>Nº</span>
-              <input
-                value={number}
-                type="number"
-                className="input_text"
-                name="numero"
-                onChange={(e) => setNumber(e.target.value)}
-              />
-            </label>
-            <label>
-              <span>Cidade</span>
-              <input
-                value={city}
-                type="text"
-                className="input_text"
-                name="cidade"
-                onChange={(e) => setCity(e.target.value)}
-              />
-            </label>
-            <label>
-              <span>Bairro</span>
-              <input
-                value={district}
-                type="text"
-                className="input_text"
-                name="bairro"
-                onChange={(e) => setDistrict(e.target.value)}
-              />
-            </label>
-            <label>
-              <span>Complemento</span>
-              <input
-                value={complement}
-                type="text"
-                className="input_text"
-                name="complemento"
-                onChange={(e) => setComplement(e.target.value)}
-              />
-            </label>
-            <input
-              type="button"
-              className="update"
-              value="Enviar"
-              onClick={handleClick}
-            />
           </form>
-        </section>
+        </div>
+        <div id="user-view">
+          <label>
+            <span>Rua</span>
+            <input
+              value={street}
+              type="text"
+              className="input_text"
+              name="rua"
+              onChange={(e) => setStreet(e.target.value)}
+            />
+          </label>
+          <label>
+            <span>CEP</span>
+            <input
+              value={cep}
+              type="text"
+              className="input_text"
+              name="cep"
+              onChange={(e) => setCep(e.target.value)}
+            />
+          </label>
+          <label>
+            <span>Nº</span>
+            <input
+              value={number}
+              type="text"
+              className="input_text"
+              name="numero"
+              onChange={(e) => setNumber(e.target.value)}
+            />
+          </label>
+          <label>
+            <span>Cidade</span>
+            <input
+              value={city}
+              type="text"
+              className="input_text"
+              name="cidade"
+              onChange={(e) => setCity(e.target.value)}
+            />
+          </label>
+          <label>
+            <span>Bairro</span>
+            <input
+              value={district}
+              type="text"
+              className="input_text"
+              name="bairro"
+              onChange={(e) => setDistrict(e.target.value)}
+            />
+          </label>
+          <label>
+            <span>Complemento</span>
+            <input
+              value={complement}
+              type="text"
+              className="input_text"
+              name="complemento"
+              onChange={(e) => setComplement(e.target.value)}
+            />
+          </label>
+          <input
+            type="button"
+            className="update"
+            value="Cadastrar"
+            onClick={handleClick}
+          />
+        </div>
       </div>
     </Default>
   );

@@ -5,6 +5,7 @@ import Login from "./components/pages/Login";
 import Cart from "./components/pages/Cart";
 import Description from "./components/pages/Description";
 import Registration from "./components/pages/Registration";
+import Order from "./components/pages/Order";
 import { AppProvider } from "./hooks/appContent";
 
 import "./style/home.css";
@@ -22,6 +23,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/description/:productId" element={<Description />} />
           <Route path="/registration" element={<Registration />} />
+          <Route path="/order" element={<Order />} />
         </Routes>
       </BrowserRouter>
     </AppProvider>
