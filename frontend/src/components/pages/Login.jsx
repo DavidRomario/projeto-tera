@@ -53,11 +53,13 @@ export default function Login() {
         "Content-Type": "application/json",
       },
     });
-    localStorage.setItem(
-      "address",
-      JSON.stringify(request.data.payload[0].address)
-    );
+    const address = request.data.payload[1].address;
+
+    const fullAddress = `${address.street}, nº ${address.number} - ${address.cep} - ${address.district}, ${address.city} `;
+    console.log(fullAddress);
+    localStorage.setItem("address", fullAddress);
     localStorage.setItem("token", request.data.payload[0].user.token);
+    localStorage.setItem("userId", request.data.payload[0].user.id);
     const productsCart = verifyCart();
 
     if (productsCart) {

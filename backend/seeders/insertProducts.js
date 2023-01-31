@@ -12,6 +12,7 @@ const createProducts = async (req, res) => {
     Products.name = product.name;
     Products.image = product.image;
     Products.price = product.price;
+    Products.number_price = product.number_price;
     Products.description = product.description;
     Products.category = product.category;
     Products.billing = product.billing;

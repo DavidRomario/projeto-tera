@@ -10,15 +10,39 @@ export default function Cart() {
   const [cardNumber, setCardNumber] = useState("");
   const [cardName, setCardName] = useState("");
   const [cardExpiration, setCardExpiration] = useState("");
+  const [address, setAddress] = useState("-");
+  const [cartValue, setCartValue] = useState(0);
   const navigate = useNavigate();
 
   const getProductsFromLocalStorage = () => {
     const productsFromStorage = localStorage.getItem("products");
+    if (productsFromStorage) {
+      setProducts(JSON.parse(productsFromStorage));
 
-    setProducts(JSON.parse(productsFromStorage));
+      const cartProducts = JSON.parse(productsFromStorage);
+      const getPrices = [];
+      cartProducts.map((product) => {
+        getPrices.push(product.number_price);
+      });
+
+      const finishValue = getPrices.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        0
+      );
+
+      setCartValue(finishValue);
+    }
   };
 
-  async function finishPayment() {
+  const getAddress = () => {
+    const address = localStorage.getItem("address");
+    if (address) {
+      setAddress(address);
+    }
+  };
+
+  async function finishPayment(e) {
+    e.preventDefault();
     const isLogged = localStorage.getItem("token");
     if (isLogged !== null) {
       const body = {
@@ -28,23 +52,38 @@ export default function Cart() {
         cardExpiration,
       };
 
-      // const request = {
-      //   success: true,
-      // };
       const request = await axios.post("http://localhost:3030/payment", body, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
-        success: true,
       });
-      if (request.success) {
+
+      if (request.data.success) {
         Swal.fire(
           "Pagamento finalizado com sucesso!",
           "Pedido foi gerado",
           "success"
         );
+        const body = {
+          products: products,
+          totalValue: cartValue,
+          user_id: localStorage.getItem("userId"),
+        };
+        const requestOrder = await axios.post(
+          "http://localhost:3030/order",
+          body,
+          {
+            headers: {
+              Authorization: localStorage.getItem("token"),
+            },
+          }
+        );
+        console.log(requestOrder, "121313");
+        // request com axios, metodo post pra api com dados do body onde body terá:
+        // o array de produtos, o cartValue e o userId (que está no localstorage)
+
         localStorage.removeItem("products");
-        navigate("/orders");
+        navigate("/order");
       }
     } else {
       Swal.fire(
@@ -58,86 +97,95 @@ export default function Cart() {
 
   useEffect(() => {
     getProductsFromLocalStorage();
+    getAddress();
   }, []);
   return (
     <Default>
       <div id="main-content">
         <div id="produto-carrinho">
-          {products.map((product) => (
-            <div className="product-cart">
-              <Link to={`/description/${product._id}`}>
-                <img className="photo" src={`${product.image}`} alt="" />
-              </Link>
-              <Link to={`/description/${product._id}`} className="none">
-                <h1 id="produto-nome">{`${product.name}`}</h1>
-              </Link>
-              <p id="produto-preco">{`${product.price}`}</p>
-              {/* <div className="button">
+          {products.length > 0 ? (
+            products.map((product) => (
+              <div className="product-cart">
+                <Link to={`/description/${product._id}`}>
+                  <img className="photo" src={`${product.image}`} alt="" />
+                </Link>
+                <Link to={`/description/${product._id}`} className="none">
+                  <h1 id="produto-nome">{`${product.name}`}</h1>
+                </Link>
+                <p id="produto-preco">{`${product.price}`}</p>
+                {/* <div className="button">
               <button id="bt1"> - </button>
               <input id="campo" type="text" value="1" />
               <button id="bt2"> + </button>
             </div> */}
-            </div>
-          ))}
+              </div>
+            ))
+          ) : (
+            <div>Não há produtos no carrinho ainda.</div>
+          )}
         </div>
-        <div id="payment-total">
-          <form className="checkout">
-            <div className="checkout-header">
-              <h1 className="checkout-title">Dados para pagamento:</h1>
+        {products.length > 0 ? (
+          <div id="payment-total">
+            <form className="checkout">
+              <div className="checkout-header">
+                <h1 className="checkout-title">Dados para pagamento:</h1>
+              </div>
+              <p>
+                <input
+                  type="text"
+                  className="checkout-input checkout-name"
+                  placeholder="Your Name"
+                  value={cardName}
+                  onChange={(e) => setCardName(e.target.value)}
+                />
+                <input
+                  type="text"
+                  className="checkout-input checkout-exp"
+                  placeholder="YY"
+                  value={cardExpiration}
+                  onChange={(e) => setCardExpiration(e.target.value)}
+                />
+              </p>
+              <p>
+                <input
+                  type="text"
+                  className="checkout-input checkout-card"
+                  placeholder="4111 1111 1111 1111"
+                  value={cardNumber}
+                  onChange={(e) => setCardNumber(e.target.value)}
+                />
+                <input
+                  type="text"
+                  className="checkout-input checkout-cvc"
+                  placeholder="CVC"
+                  value={cvv}
+                  onChange={(e) => setCvv(e.target.value)}
+                />
+              </p>
+              <p>
+                <input
+                  type="submit"
+                  value="Purchase"
+                  onClick={finishPayment}
+                  className="checkout-btn"
+                />
+              </p>
+            </form>
+            <form className="checkout">
+              <p>Endereço de entrega:</p>
+              <p>{address}</p>
+              <p>Valor total:</p>
+              <p>{`R$ ${cartValue},00`}</p>
+            </form>
+            <div className="button2">
+              <Link to="/" className="payment">
+                <button className="payment">Continuar comprando</button>
+              </Link>
             </div>
-            <p>
-              <input
-                type="text"
-                className="checkout-input checkout-name"
-                placeholder="Your Name"
-                value={cardName}
-                onChange={(e) => setCardName(e.target.value)}
-              />
-              <input
-                type="text"
-                className="checkout-input checkout-exp"
-                placeholder="YY"
-                value={cardExpiration}
-                onChange={(e) => setCardExpiration(e.target.value)}
-              />
-            </p>
-            <p>
-              <input
-                type="text"
-                className="checkout-input checkout-card"
-                placeholder="4111 1111 1111 1111"
-                value={cardNumber}
-                onChange={(e) => setCardNumber(e.target.value)}
-              />
-              <input
-                type="text"
-                className="checkout-input checkout-cvc"
-                placeholder="CVC"
-                value={cvv}
-                onChange={(e) => setCvv(e.target.value)}
-              />
-            </p>
-            <p>
-              <input
-                type="submit"
-                value="Purchase"
-                onClick={finishPayment}
-                className="checkout-btn"
-              />
-            </p>
-          </form>
-          <form className="checkout">
-            <p>Endereço de entrega:</p>
-            <p>disdeffe</p>
-            <p>Valor total:</p>
-            <p>R$3000,00</p>
-          </form>
-          <div className="button2">
-            <Link to="/">
-              <button className="payment">Continuar comprando</button>
-            </Link>
           </div>
-        </div>
+        ) : (
+          <div> </div>
+        )}
       </div>
     </Default>
   );
