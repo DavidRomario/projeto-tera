@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
-
 #home {
   text-decoration: none;
 }
@@ -30,13 +28,12 @@ main {
 .descricao {
   font-size: 100%;
   font-family: "Open Sans";
-  font-weight: bold;
   margin: 20px;
 }
 .name {
   text-transform: uppercase;
   font-size: 110%;
-  font-family: "Open Sans";
+  font-family: "Roboto";
   font-weight: bold;
   margin: 5px;
 }

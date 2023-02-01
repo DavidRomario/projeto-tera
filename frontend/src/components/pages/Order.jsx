@@ -28,22 +28,17 @@ export default function Order() {
         {orders.length > 0 ? (
           orders.map((order) => (
             <div className="product-cart">
-              <Link to={`/description/${order.number}`}>
-                <img className="photo" src={`${order.totalValue}`} alt="" />
-              </Link>
-              <Link to={`/description/${order.status}`} className="none">
-                <h1 id="produto-nome"></h1>
-              </Link>
+              <div>
+                <h1>Seu Pedido</h1>
+                <p>NUMERO DO PEDIDO: {`${order.number}`} </p>
+                <p>VALOR TOTAL: {`${order.totalValue}`}</p>
+                <p>STATUS: {`${order.status}`}</p>
+              </div>
               <p id="produto-preco"></p>
-              {/* <div className="button">
-              <button id="bt1"> - </button>
-              <input id="campo" type="text" value="1" />
-              <button id="bt2"> + </button>
-            </div> */}
             </div>
           ))
         ) : (
-          <div>Não há produtos no carrinho ainda.</div>
+          <div>Não há pedidos feitos.</div>
         )}
       </div>
     </Default>
