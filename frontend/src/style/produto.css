@@ -20,9 +20,8 @@ main {
   width: 350px;
 }
 .preço {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans";
   font-weight: bolder;
-  font-size: 16px;
   margin: 5px;
 }
 .descricao {
@@ -38,15 +37,18 @@ main {
   margin: 5px;
 }
 .press:hover {
-  background-color: white;
-  color: red;
+  background-color: red;
+  color: white;
 }
 .press {
-  height: 25px;
+  height: 30px;
   text-transform: uppercase;
   cursor: pointer;
   width: 190px;
-  /* border: 0; */
-  color: white;
+  border: 0;
+  color: black;
   background-color: red;
+  font-family: "Open Sans";
+  border-radius: 5px;
+  font-weight: bold;
 }

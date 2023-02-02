@@ -14,6 +14,7 @@
 #payment-total {
   width: 30%;
   background-color: #f22b00;
+  padding-top: 70px;
 }
 
 .form-payment {
@@ -21,10 +22,6 @@
   justify-content: center;
   width: 100%;
 }
-/* #home {
-  text-decoration: none;
-  color: black;
-} */
 
 .product-cart {
   align-items: center;
@@ -32,7 +29,6 @@
   justify-content: space-around;
   display: flex;
   width: 60%;
-  color: black;
   background-color: #f7f4f3;
   margin: 15px auto;
   border-radius: 10px;
@@ -50,16 +46,15 @@
   text-transform: uppercase;
   cursor: pointer;
   border-radius: 5px;
-  width: 150px;
+  width: 190px;
   color: rgb(255, 255, 255);
   margin: auto;
   background-color: green;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 30px;
   text-decoration: none;
-  border: 2px;
+  border: 1px solid green;
+  font-family: "Open Sans";
+  font-weight: bold;
 }
 
 .payment:hover {
@@ -69,7 +64,8 @@
 
 .button2 {
   margin-bottom: 15px;
-  margin-top: 6px;
+  margin-top: 20px;
+  display: flex;
 }
 
 #produto-nome {
@@ -83,17 +79,19 @@
 }
 
 #produto-preco {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans";
   font-weight: bolder;
   font-size: 19px;
 }
 
 .checkout {
   width: 70%;
-  margin: 30px auto;
+  margin: auto;
+  margin-top: 15px;
   padding: 10px;
   background: #f7f4f3;
   border-radius: 7px;
+  font-family: "Open Sans";
 }
 
 input {
@@ -102,14 +100,15 @@ input {
 
 .checkout-input {
   height: 32px;
-  color: aqua;
+  color: black;
   background: white;
   border: 1px solid;
   border-radius: 4px;
+  font-family: "Open Sans";
 }
 
 .checkout-name {
-  width: 150px;
+  width: 180px;
 }
 
 .checkout-title {
@@ -124,16 +123,30 @@ input {
 .checkout-exp,
 .checkout-cvc {
   margin-left: 15px;
-  width: 45px;
+  width: 51px;
+  text-align: center;
 }
 
 .checkout-btn {
   width: 100%;
   height: 34px;
-  padding: 0;
+  /* padding: 0; */
   font-weight: bold;
   color: white;
   border: 1px solid;
   background: green;
-  border-radius: 4px;
+  border-radius: 5px;
+  font-family: "Open Sans";
+}
+
+.entrega,
+.total {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0px;
+}
+
+.adress,
+.total2 {
+  font-size: 18px;
 }

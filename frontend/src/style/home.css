@@ -84,6 +84,7 @@ section {
   border: none;
   height: 32px;
   width: 78%;
+  font-family: "Open Sans";
 }
 
 #btnBusca {
@@ -95,6 +96,8 @@ section {
   background: black;
   color: white;
   font-weight: bold;
+  font-family: "Open Sans";
+  cursor: pointer;
 }
 
 #divBusca img {
@@ -131,15 +134,20 @@ section {
 
 .frete {
   color: #2ae559;
-  margin: 0 0 5px;
-  text-align: left;
   font-size: 15px;
   font-weight: bold;
+  font-family: "Open Sans";
 }
 
 .parcelas {
-  color: black;
   font-size: 15px;
+  font-weight: bold;
+  font-family: "Open Sans";
+}
+
+.price {
+  font-weight: bold;
+  font-family: "Open Sans";
 }
 
 .tenis-content:hover {
@@ -189,15 +197,19 @@ p {
 }
 
 .txt-center {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Open Sans";
   color: white;
   text-align: center !important;
   margin: auto;
 }
 
 .nav-item {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Open Sans";
   color: white;
   padding-right: 0.6rem;
   padding-left: 0.6rem;
+}
+
+.f {
+  text-decoration: none;
 }

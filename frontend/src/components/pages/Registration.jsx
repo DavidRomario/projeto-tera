@@ -3,6 +3,7 @@ import Default from "../templates/Default";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { IMaskInput } from "react-imask";
 import Swal from "sweetalert2";
 
 export default function Registration() {
@@ -115,7 +116,8 @@ export default function Registration() {
             </label>
             <label>
               <span>CPF</span>
-              <input
+              <IMaskInput
+                mask="000.000.000-00"
                 value={documentNumber}
                 type="text"
                 className="input_text"
@@ -125,7 +127,8 @@ export default function Registration() {
             </label>
             <label>
               <span>Telefone</span>
-              <input
+              <IMaskInput
+                mask="(00) 00000-0000"
                 value={telephone}
                 type="tel"
                 className="input_text"
@@ -137,7 +140,8 @@ export default function Registration() {
             </label>
             <label>
               <span>Data de Nascimento</span>
-              <input
+              <IMaskInput
+                mask="00/00/0000"
                 value={birthdate}
                 type="text"
                 className="input_text"

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Default from "../templates/Default";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { IMaskInput } from "react-imask";
 import axios from "axios";
 
 export default function Cart() {
@@ -138,23 +139,26 @@ export default function Cart() {
                   value={cardName}
                   onChange={(e) => setCardName(e.target.value)}
                 />
-                <input
+                <IMaskInput
+                  mask="00/00"
                   type="text"
                   className="checkout-input checkout-exp"
-                  placeholder="YY"
+                  placeholder="MM/YY"
                   value={cardExpiration}
                   onChange={(e) => setCardExpiration(e.target.value)}
                 />
               </p>
               <p>
-                <input
+                <IMaskInput
                   type="text"
                   className="checkout-input checkout-card"
+                  mask="0000 0000 0000 0000"
                   placeholder="4111 1111 1111 1111"
                   value={cardNumber}
                   onChange={(e) => setCardNumber(e.target.value)}
                 />
-                <input
+                <IMaskInput
+                  mask="000"
                   type="text"
                   className="checkout-input checkout-cvc"
                   placeholder="CVC"
@@ -172,10 +176,10 @@ export default function Cart() {
               </p>
             </form>
             <form className="checkout">
-              <p>Endereço de entrega:</p>
-              <p>{address}</p>
-              <p>Valor total:</p>
-              <p>{`R$ ${cartValue},00`}</p>
+              <p className="entrega">Endereço de entrega:</p>
+              <p className="adress">{address}</p>
+              <p className="total">Valor total:</p>
+              <p className="total2">{`R$ ${cartValue},00`}</p>
             </form>
             <div className="button2">
               <Link to="/" className="payment">
