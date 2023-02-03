@@ -165,7 +165,8 @@ export default function Registration() {
           </label>
           <label>
             <span>CEP</span>
-            <input
+            <IMaskInput
+              mask="00000-000"
               value={cep}
               type="text"
               className="input_text"

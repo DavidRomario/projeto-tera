@@ -169,7 +169,7 @@ export default function Cart() {
               <p>
                 <input
                   type="submit"
-                  value="Purchase"
+                  value="Finalizar compra"
                   onClick={finishPayment}
                   className="checkout-btn"
                 />

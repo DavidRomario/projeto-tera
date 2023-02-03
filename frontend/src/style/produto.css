@@ -38,7 +38,6 @@ main {
 }
 .press:hover {
   background-color: red;
-  color: white;
 }
 .press {
   height: 30px;
@@ -46,8 +45,8 @@ main {
   cursor: pointer;
   width: 190px;
   border: 0;
-  color: black;
-  background-color: red;
+  color: white;
+  background-color: rgb(204, 3, 3);
   font-family: "Open Sans";
   border-radius: 5px;
   font-weight: bold;

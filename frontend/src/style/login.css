@@ -139,4 +139,22 @@ label {
 
 span {
   font-family: "Open Sans";
+  font-weight: bold;
+}
+
+.update {
+  height: 25px;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 100px;
+  border: 0;
+  color: white;
+  background-color: rgb(204, 3, 3);
+  font-family: "Open Sans";
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.update:hover {
+  background: red;
 }
