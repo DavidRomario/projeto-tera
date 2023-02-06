@@ -33,7 +33,7 @@ async function createOrder(req, res) {
   try {
     const body = req.body;
     const order = new orderSchema();
-    const status = "aproved";
+    const status = "Aprovado";
     const number = Math.floor(Math.random() * 1000000000);
 
     const verifyUser = await models.User.findOne({

@@ -24,17 +24,26 @@ export default function Order() {
 
   return (
     <Default>
-      <div id="produto-carrinho">
+      <div id="pedidos">
         {orders.length > 0 ? (
           orders.map((order) => (
-            <div className="product-cart">
+            <div className="pedidos2">
               <div>
-                <h1>Seu Pedido</h1>
-                <p>NUMERO DO PEDIDO: {`${order.number}`} </p>
-                <p>VALOR TOTAL: {`${order.totalValue}`}</p>
-                <p>STATUS: {`${order.status}`}</p>
+                <h1 className="h1">Seu Pedido</h1>
+                <p className="p">
+                  Numero do pedido:
+                  <div className="aleatorio"> {`${order.number}`} </div>
+                </p>
+                <p className="p">Valor total: R$ {`${order.totalValue},00`}</p>
+                <p className="p">Status: {`${order.status}`}</p>
               </div>
-              <p id="produto-preco"></p>
+              <div className="img-pedidos">
+                {order.products.map((product) => (
+                  <Link to={`/description/${product._id}`}>
+                    <img className="img2" src={`${product.image}`} alt="" />
+                  </Link>
+                ))}
+              </div>
             </div>
           ))
         ) : (

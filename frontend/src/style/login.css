@@ -1,6 +1,5 @@
 #h1-login {
-  font-family: "Open Sans", sans-serif;
-  color: #000;
+  font-family: "Open Sans";
 }
 
 #topo {
@@ -19,6 +18,7 @@
   margin: 5px;
   display: flex;
   justify-content: center;
+  font-family: "Open Sans";
 }
 
 .login {
@@ -31,7 +31,7 @@
 
 .login-user-input {
   outline: 0;
-  width: 300px;
+  width: 309px;
   height: 48px;
   margin-bottom: 10px;
   padding-left: 5px;
@@ -42,13 +42,19 @@
 
 .login-password-input {
   outline: 0;
-  width: 300px;
+  width: 309px;
   height: 48px;
   /* margin-bottom: 10px; */
   padding-left: 5px;
   border-radius: 5px;
   border: 1px solid rgb(112, 112, 112);
   color: rgb(112, 112, 112);
+}
+
+#line {
+  width: 309px;
+  height: 1px;
+  background-color: rgb(112, 112, 112);
 }
 
 .login-btn {
@@ -61,11 +67,17 @@
   margin-bottom: 10px;
   cursor: pointer;
   text-transform: uppercase;
+  font-family: "Open Sans";
+}
+
+.login-btn:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(112, 112, 112);
+  border: 1px solid rgb(112, 112, 112);
 }
 
 .create-account-btn {
   border-radius: 5px;
-  margin: auto;
   background-color: white;
   width: 309px;
   height: 48px;
@@ -74,11 +86,7 @@
   text-transform: uppercase;
   border: 1px solid rgb(112, 112, 112);
   color: rgb(112, 112, 112);
-}
-
-.login-btn:hover {
-  background-color: rgb(255, 255, 255);
-  color: green;
+  font-family: "Open Sans";
 }
 
 .create-account-btn:hover {

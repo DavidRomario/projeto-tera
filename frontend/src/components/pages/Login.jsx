@@ -105,7 +105,7 @@ export default function Login() {
                 onChange={toggleRemember}
                 type="checkbox"
               />
-              <label>remember me</label>
+              <label>Lembrar login</label>
             </div>
 
             <div className="button2">
@@ -114,6 +114,7 @@ export default function Login() {
               </button>
             </div>
           </form>
+          <div id="line"></div>
           <div className="button2">
             <button
               onClick={(event) => createAccount()}

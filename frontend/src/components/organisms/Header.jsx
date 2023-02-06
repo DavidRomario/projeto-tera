@@ -8,7 +8,7 @@ export default function Header() {
   const { setInput } = useApp();
   const isLogged = () => {
     if (localStorage.getItem("token")) {
-      return "/";
+      return "/my-account";
     } else {
       return "/login";
     }

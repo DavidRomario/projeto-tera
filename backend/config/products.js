@@ -26,15 +26,15 @@ function getAllProducts() {
     },
     {
       id: 3,
-      name: "Tênis Adidas Solar Glide 5 Boost",
+      name: "Tênis Adidas Ultraboost 22",
       image:
-        "https://www.velocita.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/1200x1200_-_2022-03-22t112959.187.jpg",
-      price: "R$ 800,00",
-      number_price: 800.0,
+        "https://www.velocita.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/t/e/tenis-m-adidas-ultraboost-22-lep-gx6643-1.jpg",
+      price: "R$ 1200,00",
+      number_price: 1200.0,
       description:
-        "Boost™: Energia única de cápsulas que apresentam uma mágica combinação de benefícios funcionais, como maciez, amortecimento elástico e sensação de liberdade. Independente da temperatura, ela traz mais eficiência e conforto na sua corrida.",
+        "O Ultraboost 22 garante uma corrida responsiva, seja qual for o seu nível de treino ou a distância percorrida. O conforto é proporcionado pelo cabedal adidas PRIMEKNIT aconchegante e pelo incrível retorno de energia do BOOST. Também inclui o sistema Linear Energy Push, que reforça a estabilidade na ponta e no meio do pé, aumentando ainda mais a responsividade.",
       category: "Feminino",
-      billing: "ou 5x de R$ 160",
+      billing: "ou 5x de R$ 240",
     },
     {
       id: 4,
