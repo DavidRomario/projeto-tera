@@ -145,7 +145,30 @@ input {
   margin: 0px;
 }
 
-.adress,
+.address,
 .total2 {
   font-size: 18px;
+}
+
+.btn-remove {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-remove1 {
+  height: 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 220px;
+  border: 0;
+  color: white;
+  background-color: rgb(188, 188, 188);
+  font-family: "Open Sans";
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.btn-remove1:hover {
+  background-color: rgb(188, 188, 188);
+  color: black;
 }

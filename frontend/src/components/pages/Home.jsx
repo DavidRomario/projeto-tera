@@ -56,11 +56,13 @@ export default function Home() {
               <Link>
                 <img className="image" src={`${product.image}`} alt="" />
               </Link>
-              <Link className="productName">{`${product.name}`}</Link>
-              <p className="genero">{`${product.category}`}</p>
-              <p className="frete">Frete Gratis</p>
-              <p className="price">{`${product.price}`}</p>
-              <p className="parcelas">{`${product.billing}`}</p>
+              <div className="caracters">
+                <Link className="productName">{`${product.name}`}</Link>
+                <p className="genero">{`${product.category}`}</p>
+                <p className="frete">Frete Gratis</p>
+                <p className="price">{`${product.price}`}</p>
+                <p className="parcelas">{`${product.billing}`}</p>
+              </div>
             </div>
           ))}
         </section>

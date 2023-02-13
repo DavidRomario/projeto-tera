@@ -126,6 +126,7 @@ section {
 }
 
 .genero {
+  margin: 0 0 5px;
   color: black;
   font-size: 19px;
   font-family: "Open Sans";
@@ -133,6 +134,7 @@ section {
 }
 
 .frete {
+  margin: 0 0 5px;
   color: #2ae559;
   font-size: 15px;
   font-weight: bold;
@@ -140,12 +142,14 @@ section {
 }
 
 .parcelas {
+  margin: 0 0 5px;
   font-size: 15px;
   font-weight: bold;
   font-family: "Open Sans";
 }
 
 .price {
+  margin: 0 0 5px;
   font-weight: bold;
   font-family: "Open Sans";
 }
@@ -170,9 +174,10 @@ section {
   width: 30px;
 }
 
-p {
-  margin: 0 0 5px;
-  text-align: left;
+.caracters {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
 }
 
 @media (min-width: 768px) {

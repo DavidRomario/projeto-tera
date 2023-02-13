@@ -79,9 +79,6 @@ export default function Cart() {
             },
           }
         );
-        console.log(requestOrder, "121313");
-        // request com axios, metodo post pra api com dados do body onde body terá:
-        // o array de produtos, o cartValue e o userId (que está no localstorage)
 
         localStorage.removeItem("products");
         navigate("/order");
@@ -95,6 +92,23 @@ export default function Cart() {
       navigate("/login");
     }
   }
+
+  const handleRemoveFromCart = (event) => {
+    Swal.fire({
+      title: "Deseja excluir todos os produtos do carrinho?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Cancelar",
+      confirmButtonText: "Sim",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("products");
+        window.location.reload();
+      }
+    });
+  };
 
   useEffect(() => {
     getProductsFromLocalStorage();
@@ -114,16 +128,22 @@ export default function Cart() {
                   <h1 id="produto-nome">{`${product.name}`}</h1>
                 </Link>
                 <p id="produto-preco">{`${product.price}`}</p>
-                {/* <div className="button">
-              <button id="bt1"> - </button>
-              <input id="campo" type="text" value="1" />
-              <button id="bt2"> + </button>
-            </div> */}
               </div>
             ))
           ) : (
             <div>Não há produtos no carrinho ainda.</div>
           )}
+          <div className="btn-remove">
+            {products.length > 0 && (
+              <button
+                type="button"
+                className="btn-remove1"
+                onClick={handleRemoveFromCart}
+              >
+                Remover todos os produtos
+              </button>
+            )}
+          </div>
         </div>
         {products.length > 0 ? (
           <div id="payment-total">
@@ -177,7 +197,7 @@ export default function Cart() {
             </form>
             <form className="checkout">
               <p className="entrega">Endereço de entrega:</p>
-              <p className="adress">{address}</p>
+              <p className="address">{address}</p>
               <p className="total">Valor total:</p>
               <p className="total2">{`R$ ${cartValue},00`}</p>
             </form>
