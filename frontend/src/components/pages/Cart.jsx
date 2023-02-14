@@ -131,7 +131,7 @@ export default function Cart() {
               </div>
             ))
           ) : (
-            <div>Não há produtos no carrinho ainda.</div>
+            <div></div>
           )}
           <div className="btn-remove">
             {products.length > 0 && (
@@ -209,6 +209,15 @@ export default function Cart() {
           </div>
         ) : (
           <div> </div>
+        )}
+        {products.length == 0 ? (
+          <div className="not-product">
+            <div className="content-not-product">
+              Não há produtos no carrinho ainda.
+            </div>
+          </div>
+        ) : (
+          <div></div>
         )}
       </div>
     </Default>

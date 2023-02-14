@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 70vh;
 }
 
 #payment-total {
@@ -171,4 +172,20 @@ input {
 .btn-remove1:hover {
   background-color: rgb(188, 188, 188);
   color: black;
+}
+
+.not-product {
+  width: 100%;
+  margin: auto;
+  font-family: "Open Sans";
+  font-size: 17px;
+}
+
+.content-not-product {
+  max-width: 284px;
+  padding: 10px;
+  color: black;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #f7f4f3;
 }

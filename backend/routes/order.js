@@ -6,5 +6,6 @@ const orderController = require("../controllers/orderController");
 router.use(jwt);
 router.get("/:id", orderController.getOrdersByUserId);
 router.post("/", orderController.createOrder);
+router.put("/:id", orderController.updateOrder);
 
 module.exports = router;

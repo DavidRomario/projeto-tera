@@ -69,4 +69,31 @@ async function createOrder(req, res) {
   }
 }
 
-module.exports = { getOrdersByUserId, createOrder };
+async function updateOrder(req, res) {
+  try {
+    const orderId = req.params.id;
+    const status = "Cancelado";
+
+    await orderSchema.updateOne(
+      { _id: orderId },
+      {
+        status: status,
+      }
+    );
+
+    return res.status(200).json({
+      success: true,
+      payload: [],
+      message: "Order cancel with success.",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      payload: [],
+      message: "error on api",
+    });
+  }
+}
+
+module.exports = { getOrdersByUserId, createOrder, updateOrder };
