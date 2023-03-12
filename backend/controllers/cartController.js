@@ -61,6 +61,7 @@ async function updateCart(req, res) {
   try {
     const body = req.body;
     const cartId = req.params.id;
+
     const cart = await cartSchema.findById(cartId);
 
     if (!cart) {

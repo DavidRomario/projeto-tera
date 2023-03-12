@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Default from "../templates/Default";
-import { Link } from "react-router-dom";
 
 export default function Description() {
   const [product, setProduct] = useState([]);

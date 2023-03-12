@@ -14,6 +14,7 @@
 }
 
 .remember {
+  padding-top: 8px;
   color: rgb(112, 112, 112);
   margin: 5px;
   display: flex;
@@ -44,11 +45,18 @@
   outline: 0;
   width: 309px;
   height: 48px;
-  /* margin-bottom: 10px; */
   padding-left: 5px;
   border-radius: 5px;
   border: 1px solid rgb(112, 112, 112);
   color: rgb(112, 112, 112);
+}
+
+.forgot-password {
+  color: rgb(112, 112, 112);
+  font-family: "Open Sans";
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 #line {
@@ -57,17 +65,24 @@
   background-color: rgb(112, 112, 112);
 }
 
+.button3 {
+  margin-bottom: 15px;
+  margin-top: 20px;
+  display: flex;
+}
+
 .login-btn {
   border: 0px;
   border-radius: 5px;
   color: white;
   background-color: green;
   width: 309px;
-  height: 48px;
+  height: 54px;
   margin-bottom: 10px;
   cursor: pointer;
   text-transform: uppercase;
   font-family: "Open Sans";
+  font-weight: bold;
 }
 
 .login-btn:hover {
@@ -80,13 +95,14 @@
   border-radius: 5px;
   background-color: white;
   width: 309px;
-  height: 48px;
+  height: 54px;
   margin-bottom: 10px;
   cursor: pointer;
   text-transform: uppercase;
   border: 1px solid rgb(112, 112, 112);
   color: rgb(112, 112, 112);
   font-family: "Open Sans";
+  font-weight: bold;
 }
 
 .create-account-btn:hover {
@@ -165,4 +181,15 @@ span {
 
 .update:hover {
   background: red;
+}
+
+.pad {
+  padding-top: 14px;
+}
+
+.icon {
+  display: flex;
+  justify-content: flex-end;
+  color: #999;
+  cursor: pointer;
 }

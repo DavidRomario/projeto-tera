@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Default from "../templates/Default";
 import axios from "axios";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IMaskInput } from "react-imask";
 import Swal from "sweetalert2";
+import validator from "validator";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 export default function Registration() {
-  // const [users, setUsers] = useState("");
-
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -23,6 +23,64 @@ export default function Registration() {
   const [city, setCity] = useState("");
   const [district, setDistrict] = useState("");
   const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  function handleEmailChange(event) {
+    const validate = validateEmail(event.target.value);
+    if (validate) {
+      console.log("valido");
+      event.target.setCustomValidity("");
+    } else {
+      console.log("error");
+      event.target.setCustomValidity("Email inválido");
+      event.target.reportValidity();
+      event.preventDefault();
+    }
+
+    setEmail(event.target.value);
+  }
+
+  function validateEmail(email) {
+    return /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i.test(email);
+  }
+
+  const handleValidatePassword = (event) => {
+    const verifyPassword = validator.isStrongPassword(event.target.value, {
+      minLength: 8,
+      minLowercase: 1,
+      minUppercase: 1,
+      minNumbers: 1,
+      minSymbols: 1,
+    });
+
+    if (!verifyPassword) {
+      event.target.setCustomValidity(
+        "Insira pelo menos 8 caracteres, 1 maiúsculo, 1 minúsculo, 1 número e um caracter especial."
+      );
+      event.target.reportValidity();
+      event.preventDefault();
+    } else {
+      event.target.setCustomValidity("");
+    }
+    setPassword(event.target.value);
+  };
+
+  function handleCpfChange(event) {
+    if (documentNumber.length !== 11) {
+      console.log("error");
+      event.target.setCustomValidity("Insira os 11 números do seu CPF.");
+      event.target.reportValidity();
+      event.preventDefault();
+    } else {
+      event.target.setCustomValidity("");
+    }
+    setDocumentNumber(event.target.value);
+  }
 
   async function createUser() {
     const body = {
@@ -101,18 +159,25 @@ export default function Registration() {
                 type="text"
                 className="input_text"
                 name="email"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={handleEmailChange}
+                required
               />
             </label>
             <label>
               <span>Senha</span>
               <input
                 value={password}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 className="input_text"
                 name="senha"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={handleValidatePassword}
               />
+              <span className="icon">
+                <FontAwesomeIcon
+                  icon={showPassword ? faEyeSlash : faEye}
+                  onClick={handleClickShowPassword}
+                />
+              </span>
             </label>
             <label>
               <span>CPF</span>
@@ -122,7 +187,8 @@ export default function Registration() {
                 type="text"
                 className="input_text"
                 name="cpf"
-                onChange={(e) => setDocumentNumber(e.target.value)}
+                onChange={handleCpfChange}
+                required
               />
             </label>
             <label>

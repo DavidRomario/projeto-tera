@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { IMaskInput } from "react-imask";
 import axios from "axios";
+import validator from "validator";
 
 export default function Cart() {
   const [products, setProducts] = useState([]);
@@ -42,6 +43,17 @@ export default function Cart() {
     }
   };
 
+  const handleValidateCreditCard = (event) => {
+    if (!validator.isCreditCard(event.target.value)) {
+      event.target.setCustomValidity("Insira um cartão de crédito válido");
+      event.target.reportValidity();
+      event.preventDefault();
+    } else {
+      event.target.setCustomValidity("");
+    }
+    setCardNumber(event.target.value);
+  };
+
   async function finishPayment(e) {
     e.preventDefault();
     const isLogged = localStorage.getItem("token");
@@ -70,15 +82,11 @@ export default function Cart() {
           totalValue: cartValue,
           user_id: localStorage.getItem("userId"),
         };
-        const requestOrder = await axios.post(
-          "http://localhost:3030/order",
-          body,
-          {
-            headers: {
-              Authorization: localStorage.getItem("token"),
-            },
-          }
-        );
+        await axios.post("http://localhost:3030/order", body, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        });
 
         localStorage.removeItem("products");
         navigate("/order");
@@ -175,7 +183,7 @@ export default function Cart() {
                   mask="0000 0000 0000 0000"
                   placeholder="4111 1111 1111 1111"
                   value={cardNumber}
-                  onChange={(e) => setCardNumber(e.target.value)}
+                  onChange={handleValidateCreditCard}
                 />
                 <IMaskInput
                   mask="000"
@@ -210,7 +218,7 @@ export default function Cart() {
         ) : (
           <div> </div>
         )}
-        {products.length == 0 ? (
+        {products.length === 0 ? (
           <div className="not-product">
             <div className="content-not-product">
               Não há produtos no carrinho ainda.

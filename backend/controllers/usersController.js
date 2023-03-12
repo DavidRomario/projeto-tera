@@ -136,12 +136,18 @@ async function getUsers(req, res) {
 async function updateUser(req, res) {
   try {
     const id = req.params.id;
-    const name = req.body.name;
-    const lastname = req.body.lastname;
-    const email = req.body.email;
-    const documentNumber = req.body.documentNumber;
-    const birthdate = req.body.birthdate;
-    const telephone = req.body.telephone;
+    const name = req.body.user.name;
+    const lastname = req.body.user.lastname;
+    const email = req.body.user.email;
+    const documentNumber = req.body.user.documentNumber;
+    const birthdate = req.body.user.birthdate;
+    const telephone = req.body.user.telephone;
+    const street = req.body.address.street;
+    const number = req.body.address.number;
+    const city = req.body.address.city;
+    const district = req.body.address.district;
+    const complement = req.body.address.complement;
+    const cep = req.body.address.cep;
 
     const verifyUser = await models.User.findOne({
       where: {
@@ -170,6 +176,22 @@ async function updateUser(req, res) {
         },
       }
     );
+    await models.Address.update(
+      {
+        street: street,
+        number: number,
+        city: city,
+        district: district,
+        complement: complement,
+        cep: cep,
+      },
+      {
+        where: {
+          users_id: parseInt(id),
+        },
+      }
+    );
+
     return res.status(200).json({
       success: true,
       message: "user updated",

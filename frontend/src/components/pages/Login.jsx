@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import Default from "../templates/Default";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import TextField from "@mui/material/TextField";
+import { IconButton } from "@mui/material";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 export default function Login() {
   const [email, setEmail] = useState(() => {
@@ -9,10 +13,18 @@ export default function Login() {
     return emailLocalStorage;
   });
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   const [password, setPassword] = useState(() => {
     const passwordLocalStorage = localStorage.getItem("rememberPassword");
     return passwordLocalStorage;
   });
+
+  const handlePasswordChange = (event) => setPassword(event.target.value);
 
   const [remember, setRemember] = useState(() => {
     const rememberLocalStorage = localStorage.getItem("remember");
@@ -85,20 +97,31 @@ export default function Login() {
         <div className="login">
           <h1 id="h1-login">Bem Vindo!</h1>
           <form onSubmit={handleSubmit} className="form">
-            <input
-              className="login-user-input"
-              type="text"
-              placeholder=" E-mail"
-              value={email}
-              onChange={(e) => handleEmail(e.target.value)}
-            />
-            <input
-              className="login-password-input"
-              type="password"
-              placeholder="Senha"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className="pad">
+              <TextField
+                className="login-user-input"
+                type="text"
+                placeholder=" E-mail"
+                value={email}
+                onChange={(e) => handleEmail(e.target.value)}
+              />
+            </div>
+            <div className="pad">
+              <TextField
+                className="login-password-input"
+                type={showPassword ? "text" : "password"}
+                placeholder="Senha"
+                value={password}
+                onChange={handlePasswordChange}
+                InputProps={{
+                  endAdornment: (
+                    <IconButton onClick={handleClickShowPassword}>
+                      <VisibilityIcon />
+                    </IconButton>
+                  ),
+                }}
+              />
+            </div>
             <div className="remember">
               <input
                 checked={remember}
@@ -107,7 +130,9 @@ export default function Login() {
               />
               <label>Lembrar login</label>
             </div>
-
+            <Link to="/forgot-password" className="forgot-password">
+              Esqueci minha senha
+            </Link>
             <div className="button2">
               <button className="login-btn" type="submit">
                 Entrar
@@ -115,7 +140,7 @@ export default function Login() {
             </div>
           </form>
           <div id="line"></div>
-          <div className="button2">
+          <div className="button3">
             <button
               onClick={(event) => createAccount()}
               className="create-account-btn"

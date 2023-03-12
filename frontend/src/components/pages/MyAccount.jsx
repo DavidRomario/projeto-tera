@@ -29,6 +29,10 @@ export default function MyAccount() {
     navigate("/");
   };
 
+  const handleClickUpdate = () => {
+    navigate(`/edit-user/${userData.user.id}`);
+  };
+
   useEffect(() => {
     getUserInfo();
   }, []);
@@ -59,6 +63,9 @@ export default function MyAccount() {
             <div className="btn-account">
               <button onClick={handleClickToOrders} className="btn-order">
                 Meus Pedidos
+              </button>
+              <button onClick={handleClickUpdate} className="btn-account2">
+                Editar
               </button>
               <button onClick={handleClickToLogout} className="btn-account2">
                 Sair da conta
